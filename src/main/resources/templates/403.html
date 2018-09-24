@@ -6,9 +6,10 @@
 		<title>Security with Spring Boot</title>
 	</head>
 	<body>
-		<h1>Hello, This is Home page!</h1>
-		<a style="color: blue" th:href="@{/user}">User Page</a>
-		<br />
-		<a style="color: blue" th:href="@{/admin}">Admin Page</a>
+		<h1>Access is Denied!</h1>
+		<a style="color: blue" th:href="@{/}">Home</a>
+		<form th:action="@{/logout}" method="post">
+			<input type="submit" value="Sign Out" />
+		</form>
 	</body>
 </html>

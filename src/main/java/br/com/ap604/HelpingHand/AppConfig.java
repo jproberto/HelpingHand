@@ -8,7 +8,6 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @EnableJpaAuditing
@@ -25,10 +24,10 @@ public class AppConfig {
 		SpringApplication.run(AppConfig.class, args);
 	}
 
-	@RequestMapping("/")
-	String index() {
-		System.out.println(ambiente);
-		return ambiente;
-	}
+	//	@RequestMapping("/")
+	//	String index() {
+	//		System.out.println(ambiente);
+	//		return ambiente;
+	//	}
 
 }
