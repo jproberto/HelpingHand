@@ -1,0 +1,115 @@
+package br.com.ap604.HelpingHand.model;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import br.com.ap604.HelpingHand.enumeration.Time;
+
+@Entity
+@EntityListeners(AuditingEntityListener.class)
+@JsonIgnoreProperties(value = {"criadoEm", "atualizadoEm"}, allowGetters = true)
+public class Jogador {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long	id;
+
+	@Column(nullable = false, updatable = false)
+	@Temporal(TemporalType.TIMESTAMP)
+	@CreatedDate
+	private Date	criadoEm;
+
+	@Column(nullable = false)
+	@Temporal(TemporalType.TIMESTAMP)
+	@LastModifiedDate
+	private Date	atualizadoEm;
+
+	@Column(nullable = false)
+	private String	nome;
+
+	@Column(nullable = false)
+	private int		nivel;
+
+	@Column(nullable = false)
+	@Enumerated(EnumType.STRING)
+	private Time	time;
+
+	@OneToMany(mappedBy = "jogador")
+	private List<Participante>	participantes	= new ArrayList<Participante>();
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public Date getCriadoEm() {
+		return criadoEm;
+	}
+
+	public void setCriadoEm(Date criadoEm) {
+		this.criadoEm = criadoEm;
+	}
+
+	public Date getAtualizadoEm() {
+		return atualizadoEm;
+	}
+
+	public void setAtualizadoEm(Date atualizadoEm) {
+		this.atualizadoEm = atualizadoEm;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public int getNivel() {
+		return nivel;
+	}
+
+	public void setNivel(int nivel) {
+		this.nivel = nivel;
+	}
+
+	public Time getTime() {
+		return time;
+	}
+
+	public void setTime(Time time) {
+		this.time = time;
+	}
+
+	public List<Participante> getParticipantes() {
+		return participantes;
+	}
+
+	public void setParticipantes(List<Participante> participantes) {
+		this.participantes = participantes;
+	}
+
+}
