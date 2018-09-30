@@ -47,6 +47,9 @@ public class Reide {
 	private Boolean				reideEx;
 
 	@ManyToOne
+	private Ginasio				ginasio;
+
+	@ManyToOne
 	private Chefe				chefe;
 
 	@OneToMany
@@ -90,6 +93,14 @@ public class Reide {
 
 	public void setReideEx(Boolean reideEx) {
 		this.reideEx = reideEx;
+	}
+
+	public Ginasio getGinasio() {
+		return ginasio;
+	}
+
+	public void setGinasio(Ginasio ginasio) {
+		this.ginasio = ginasio;
 	}
 
 	public Chefe getChefe() {
